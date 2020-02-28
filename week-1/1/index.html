@@ -1,0 +1,37 @@
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.7.2.js"></script>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var primeNumbers = [2, 3, 5, 7, 11];
+        var listIn = function(selector) {
+            return function(num){
+                $(selector).append('<p>' + num + '</p>');
+            };
+        }
+        _.each(primeNumbers, listIn('#primenumbers'));
+ 
+        var square = function(num) { return num * num; };
+        _.each(_.map(primeNumbers, square), listIn('#theirsquares'));
+ 
+        var sum = function(a, b) { return a + b; };
+        var listInSum = listIn('#sum');
+        listInSum(_.reduce(primeNumbers, sum, 0));
+ 
+        var even = function(num) { return num % 2 == 0; };
+        _.each(_.filter(primeNumbers, even), listIn('#even'));
+ 
+        var odd = function(num) { return !even(num); };
+        listIn('#allodd')(_.all(primeNumbers, odd));
+    });
+</script>
+</head>
+<body>
+    <div id="primenumbers">Prime numbers</div>
+    <div id="theirsquares">Their squares</div>
+    <div id="sum">Their sum</div>
+    <div id="even">The even ones</div>
+    <div id="allodd">Are all primes odd?</div>
+</body>
+</html>
