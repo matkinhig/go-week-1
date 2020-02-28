@@ -40,8 +40,33 @@ func TestMin2(t *testing.T) {
 func TestMin3(t *testing.T) {
 	result, err := Min([]int{0, -1, -2, 3, 4, 5})
 	if len(err) > 0 {
-		t.Error("TestMin2 error", err)
+		t.Error("TestMin3 error", err)
 	} else {
-		t.Log("TestMin2 success. result: ", result)
+		t.Log("TestMin3 success. result: ", result)
+	}
+}
+
+func TestContain1(t *testing.T) {
+	result, err := Contains([]int{0, -1, -2, 3, 4, 5}, -2)
+	if len(err) > 0 {
+		t.Error("TestContain1 error", err)
+	} else {
+		t.Log("TestContain1 success. result: ", result)
+	}
+}
+func TestContain2(t *testing.T) {
+	result, err := Contains([]int{}, -2)
+	if len(err) > 0 {
+		t.Error("TestContain2 error", err)
+	} else {
+		t.Log("TestContain2 success. result: ", result)
+	}
+}
+func TestContain23(t *testing.T) {
+	result, err := Contains([]int{0, -1, -2, 3, 4, 5}, 100)
+	if len(err) > 0 {
+		t.Error("TestContain23 error", err)
+	} else {
+		t.Log("TestContain23 success. result: ", result)
 	}
 }
