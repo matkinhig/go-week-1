@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width">
+  <meta name="format-detection" content="telephone=no">
+  <title>Các câu lệnh MySQL quan trọng cần phải biết - Học VPS</title>
+
+<!-- This site is optimized with the Yoast SEO plugin v13.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Các câu lệnh MySQL quan trọng cần phải biết - Học VPS" />
+<meta property="og:description" content="Khi chạy các lệnh này, bạn cần login vào MySQL với tài khoản root (MySQL root chứ không phải tài khoản root quản lý VPS) hoặc tài khoản có full quyền. Tất cả các thao tác mình thực hiện trên VPS CentOS Đăng nhập MySQL bạn dùng lệnh: mysql -u root -p 1. Thư mục chứa database &hellip;" />
+<meta property="og:url" content="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/" />
+<meta property="og:site_name" content="Học VPS" />
+<meta property="article:publisher" content="https://www.facebook.com/pages/Học-VPS/1426542700986555" />
+<meta property="article:section" content="Database" />
+<meta property="article:published_time" content="2014-03-07T16:46:59+00:00" />
+<meta property="article:modified_time" content="2017-05-15T08:57:58+00:00" />
+<meta property="og:updated_time" content="2017-05-15T08:57:58+00:00" />
+<meta property="og:image" content="https://hocvps.com/wp-content/uploads/2014/05/hocvps.png" />
+<meta property="og:image:secure_url" content="https://hocvps.com/wp-content/uploads/2014/05/hocvps.png" />
+<meta property="og:image:width" content="431" />
+<meta property="og:image:height" content="277" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://hocvps.com/#website","url":"https://hocvps.com/","name":"H\u1ecdc VPS","inLanguage":"en-US","description":"Ki\u1ebfn th\u1ee9c qu\u1ea3n tr\u1ecb VPS, Server","publisher":{"@id":"https://hocvps.com/#/schema/person/"},"potentialAction":{"@type":"SearchAction","target":"https://hocvps.com/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#webpage","url":"https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/","name":"C\u00e1c c\u00e2u l\u1ec7nh MySQL quan tr\u1ecdng c\u1ea7n ph\u1ea3i bi\u1ebft - H\u1ecdc VPS","isPartOf":{"@id":"https://hocvps.com/#website"},"inLanguage":"en-US","datePublished":"2014-03-07T16:46:59+00:00","dateModified":"2017-05-15T08:57:58+00:00"},{"@type":"Article","@id":"https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#article","isPartOf":{"@id":"https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#webpage"},"author":{"@id":"https://hocvps.com/#/schema/person/ca2f3ee766faadcb33b12ce02de3667f"},"headline":"C\u00e1c c\u00e2u l\u1ec7nh MySQL quan tr\u1ecdng c\u1ea7n ph\u1ea3i bi\u1ebft","datePublished":"2014-03-07T16:46:59+00:00","dateModified":"2017-05-15T08:57:58+00:00","commentCount":"38","mainEntityOfPage":{"@id":"https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#webpage"},"publisher":{"@id":"https://hocvps.com/#/schema/person/"},"articleSection":"Database","inLanguage":"en-US"},{"@type":["Person"],"@id":"https://hocvps.com/#/schema/person/ca2f3ee766faadcb33b12ce02de3667f","name":"Lu\u00e2n Tr\u1ea7n","image":{"@type":"ImageObject","@id":"https://hocvps.com/#authorlogo","inLanguage":"en-US","url":"https://secure.gravatar.com/avatar/d9b1ac81d69dfa1a7d280f6bbcba2b6e?s=96&d=mm&r=g","caption":"Lu\u00e2n Tr\u1ea7n"},"sameAs":[]}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Học VPS &raquo; Feed" href="https://hocvps.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Học VPS &raquo; Comments Feed" href="https://hocvps.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Học VPS &raquo; Các câu lệnh MySQL quan trọng cần phải biết Comments Feed" href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/hocvps.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<!-- managing ads with Advanced Ads – https://wpadvancedads.com/ -->		<script>
+			//@formatter:off
+						advanced_ads_ready=function(){var fns=[],listener,doc=typeof document==="object"&&document,hack=doc&&doc.documentElement.doScroll,domContentLoaded="DOMContentLoaded",loaded=doc&&(hack?/^loaded|^c/:/^loaded|^i|^c/).test(doc.readyState);if(!loaded&&doc){listener=function(){doc.removeEventListener(domContentLoaded,listener);window.removeEventListener("load",listener);loaded=1;while(listener=fns.shift())listener()};doc.addEventListener(domContentLoaded,listener);window.addEventListener("load",listener)}return function(fn){loaded?setTimeout(fn,0):fns.push(fn)}}();
+			</script><style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='yarppWidgetCss-css'  href='https://hocvps.com/wp-content/plugins/yet-another-related-posts-plugin/style/widget.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='cwp-style-css'  href='https://hocvps.com/wp-content/plugins/comments-widget-plus/assets/css/cwp.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='dwqa-style-css'  href='https://hocvps.com/wp-content/plugins/dw-question-answer/templates/assets/css/style.css?ver=180720161357' type='text/css' media='all' />
+<link rel='stylesheet' id='dwqa-rtl-css'  href='https://hocvps.com/wp-content/plugins/dw-question-answer/templates/assets/css/rtl.css?ver=180720161357' type='text/css' media='all' />
+<link rel='stylesheet' id='theme-style-css'  href='https://hocvps.com/wp-content/themes/hocvps/style.css?ver=5.3.2' type='text/css' media='all' />
+<style id='theme-style-inline-css' type='text/css'>
+ 
+				/* Links */
+				a, 
+				a:visited { color:#d95b44; }
+				a:hover, 
+				.widget a:hover,
+				#primary-nav ul a:hover,
+				#footer-nav a:hover,
+				#breadcrumbs a:hover { color:#d95b44; }
+				
+				/* Theme Color */
+				#commentform #submit, 
+				.st_faq h2.active .action, 
+				.widget_categories ul span, 
+				.pagination .current, 
+				.tags a, 
+				.page-links span,
+				#comments .comment-meta .author-badge,
+				input[type="reset"],
+				input[type="submit"],
+				input[type="button"] { background: #d95b44; }
+				#live-search #searchsubmit, input[type="submit"] { background-color: #d95b44; }
+				.tags a:before { border-color: transparent #d95b44 transparent transparent; }
+
+				.dwqa-content a {
+color: #d95b44 !important;
+}
+				
+				
+</style>
+<link rel='stylesheet' id='font-awesome-css'  href='https://hocvps.com/wp-content/themes/knowhow/css/font-awesome.min.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='shortcodes-css'  href='https://hocvps.com/wp-content/themes/knowhow/framework/shortcodes/shortcodes.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-featherlight-css'  href='https://hocvps.com/wp-content/plugins/wp-featherlight/css/wp-featherlight.min.css?ver=1.3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='sedlex_styles-css'  href='https://hocvps.com/wp-content/sedlex/inline_styles/55386451f6e40aaf5debaf60f807285a5665e121.css?ver=20200306' type='text/css' media='all' />
+<link rel='stylesheet' id='yarppRelatedCss-css'  href='https://hocvps.com/wp-content/plugins/yet-another-related-posts-plugin/style/related.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='hocvps-style-css'  href='https://hocvps.com/wp-content/themes/hocvps/style.css?v=0627&#038;ver=5.3.2' type='text/css' media='all' />
+<script type='text/javascript' src='https://hocvps.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://hocvps.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://hocvps.com/wp-content/plugins/google-analyticator/external-tracking.min.js?ver=6.5.4'></script>
+<link rel='https://api.w.org/' href='https://hocvps.com/wp-json/' />
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel='shortlink' href='https://hocvps.com/?p=224' />
+<link rel="alternate" type="application/json+oembed" href="https://hocvps.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fhocvps.com%2Fcac-cau-lenh-mysql-can-phai-biet%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://hocvps.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fhocvps.com%2Fcac-cau-lenh-mysql-can-phai-biet%2F&#038;format=xml" />
+<script>(function() {
+  var _fbq = window._fbq || (window._fbq = []);
+  if (!_fbq.loaded) {
+    var fbds = document.createElement('script');
+    fbds.async = true;
+    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(fbds, s);
+    _fbq.loaded = true;
+  }
+  _fbq.push(['addPixelId', '668187989928454']);
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(['track', 'PixelInitialized', {}]);
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=668187989928454&amp;ev=NoScript" /></noscript>
+<!--[if lt IE 9]><script src="https://hocvps.com/wp-content/themes/knowhow/js/html5.js"></script><![endif]--><!--[if (gte IE 6)&(lte IE 8)]><script src="https://hocvps.com/wp-content/themes/knowhow/js/selectivizr-min.js"></script><![endif]--><link rel="shortcut icon" href="https://hocvps.com/wp-content/uploads/2014/01/cloud.ico"/>
+			<style type="text/css">.cwp-li {overflow: hidden;}.cwp-avatar {float: left;margin-top: .2em;margin-right: 1em;}.cwp-avatar.rounded .avatar{border-radius:50%;}.cwp-avatar.square .avatar{border-radius:0;}.cwp-comment-excerpt {display: block;color:#787878;}</style>
+		      <meta name="onesignal" content="wordpress-plugin"/>
+            <script>
+
+      window.OneSignal = window.OneSignal || [];
+
+      OneSignal.push( function() {
+        OneSignal.SERVICE_WORKER_UPDATER_PATH = "OneSignalSDKUpdaterWorker.js.php";
+        OneSignal.SERVICE_WORKER_PATH = "OneSignalSDKWorker.js.php";
+        OneSignal.SERVICE_WORKER_PARAM = { scope: '/' };
+
+        OneSignal.setDefaultNotificationUrl("https://hocvps.com");
+        var oneSignal_options = {};
+        window._oneSignalInitOptions = oneSignal_options;
+
+        oneSignal_options['wordpress'] = true;
+oneSignal_options['appId'] = '65946c20-b47f-4c3d-9d9a-431ef1f0e7db';
+oneSignal_options['httpPermissionRequest'] = { };
+oneSignal_options['httpPermissionRequest']['enable'] = true;
+oneSignal_options['welcomeNotification'] = { };
+oneSignal_options['welcomeNotification']['title'] = "";
+oneSignal_options['welcomeNotification']['message'] = "";
+oneSignal_options['path'] = "https://hocvps.com/wp-content/plugins/onesignal-free-web-push-notifications/sdk_files/";
+oneSignal_options['promptOptions'] = { };
+oneSignal_options['notifyButton'] = { };
+oneSignal_options['notifyButton']['enable'] = true;
+oneSignal_options['notifyButton']['position'] = 'bottom-right';
+oneSignal_options['notifyButton']['theme'] = 'default';
+oneSignal_options['notifyButton']['size'] = 'medium';
+oneSignal_options['notifyButton']['displayPredicate'] = function() {
+              return OneSignal.isPushNotificationsEnabled()
+                      .then(function(isPushEnabled) {
+                          return !isPushEnabled;
+                      });
+            };
+oneSignal_options['notifyButton']['showCredit'] = true;
+oneSignal_options['notifyButton']['text'] = {};
+                OneSignal.init(window._oneSignalInitOptions);
+                OneSignal.showSlidedownPrompt();      });
+
+      function documentInitOneSignal() {
+        var oneSignal_elements = document.getElementsByClassName("OneSignal-prompt");
+
+        var oneSignalLinkClickHandler = function(event) { OneSignal.push(['registerForPushNotifications']); event.preventDefault(); };        for(var i = 0; i < oneSignal_elements.length; i++)
+          oneSignal_elements[i].addEventListener('click', oneSignalLinkClickHandler, false);
+      }
+
+      if (document.readyState === 'complete') {
+           documentInitOneSignal();
+      }
+      else {
+           window.addEventListener("load", function(event){
+               documentInitOneSignal();
+          });
+      }
+    </script>
+<link rel="amphtml" href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/amp/"><!-- Google Analytics Tracking by Google Analyticator 6.5.4: http://www.videousermanuals.com/google-analyticator/ -->
+<script type="text/javascript">
+    var analyticsFileTypes = [''];
+    var analyticsSnippet = 'disabled';
+    var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-3866070-46', 'auto');
+ 
+	ga('send', 'pageview');
+</script>
+</head>
+<body class="post-template-default single single-post postid-224 single-format-standard wp-featherlight-captions">
+
+<!-- #site-container -->
+<div id="site-container" class="clearfix">
+
+<!-- #primary-nav-mobile -->
+<nav id="primary-nav-mobile">
+<a class="menu-toggle clearfix" href="#"><i class="fa fa-reorder"></i></a>
+<ul id="mobile-menu" class="clearfix"><li id="menu-item-356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-356"><a href="https://hocvps.com/bat-dau/">Bắt đầu</a></li>
+<li id="menu-item-1534" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1534"><a href="https://hocvps.com/series/">Series</a>
+<ul class="sub-menu">
+	<li id="menu-item-1634" class="menu-item menu-item-type-taxonomy menu-item-object-series menu-item-1634"><a href="https://hocvps.com/series/sentora/">Sentora</a></li>
+	<li id="menu-item-1787" class="menu-item menu-item-type-taxonomy menu-item-object-series menu-item-1787"><a href="https://hocvps.com/series/vesta/">Vesta</a></li>
+	<li id="menu-item-1888" class="menu-item menu-item-type-taxonomy menu-item-object-series menu-item-1888"><a href="https://hocvps.com/series/varnish/">Varnish</a></li>
+</ul>
+</li>
+<li id="menu-item-66" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-66"><a title="Mã giảm giá, coupon VPS" target="_blank" rel="noopener noreferrer" href="https://canhme.com/">Coupon</a>
+<ul class="sub-menu">
+	<li id="menu-item-640" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-640"><a target="_blank" rel="noopener noreferrer" href="https://canhme.com/vultr-coupon/">Vultr</a></li>
+	<li id="menu-item-256" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-256"><a target="_blank" rel="noopener noreferrer" href="https://canhme.com/digitalocean-coupon/">Digital Ocean</a></li>
+	<li id="menu-item-257" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-257"><a target="_blank" rel="noopener noreferrer" href="https://canhme.com/ramnode-coupon/">Ramnode</a></li>
+</ul>
+</li>
+<li id="menu-item-2288" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2288"><a href="#">Tools</a>
+<ul class="sub-menu">
+	<li id="menu-item-2287" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2287"><a href="https://hocvps.com/crontab/">Tạo Crontab (Cron Job)</a></li>
+	<li id="menu-item-2302" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2302"><a href="https://hocvps.com/header/">Header Check</a></li>
+	<li id="menu-item-2331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2331"><a href="https://hocvps.com/csr/">Tạo mã CSR Online</a></li>
+	<li id="menu-item-2335" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2335"><a target="_blank" rel="noopener noreferrer" href="https://tocdo.net/">Test Tốc Độ</a></li>
+</ul>
+</li>
+<li id="menu-item-796" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-796"><a href="https://hocvps.com/dich-vu/">Dịch vụ</a>
+<ul class="sub-menu">
+	<li id="menu-item-2362" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2362"><a href="https://hocvps.com/dich-vu/">Dịch vụ Cài đặt VPS/Server</a></li>
+	<li id="menu-item-2361" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2361"><a href="https://hocvps.com/dich-vu-ssl/">Dịch vụ Cài đặt SSL</a></li>
+</ul>
+</li>
+<li id="menu-item-1883" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1883"><a href="https://hocvps.com/lien-he/">Liên hệ</a></li>
+</ul></nav>
+<!-- /#primary-nav-mobile -->
+
+<!-- #header -->
+<header id="site-header" class="clearfix" role="banner">
+<div class="ht-container">
+
+<!-- #logo -->
+  <div id="logo">
+    <div class="site-title">      <a title="Học VPS" href="https://hocvps.com">
+            Học VPS            </a>
+     </div>	  <span>Kiến thức quản trị VPS, Server</span>
+  </div>
+<!-- /#logo -->
+  
+<!-- #primary-nav -->
+<nav id="primary-nav" role="navigation" class="clearfix">
+    <ul id="menu-primary-menu" class="nav sf-menu clearfix"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-356"><a href="https://hocvps.com/bat-dau/">Bắt đầu</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1534"><a href="https://hocvps.com/series/">Series</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-series menu-item-1634"><a href="https://hocvps.com/series/sentora/">Sentora</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-series menu-item-1787"><a href="https://hocvps.com/series/vesta/">Vesta</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-series menu-item-1888"><a href="https://hocvps.com/series/varnish/">Varnish</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-66"><a title="Mã giảm giá, coupon VPS" target="_blank" rel="noopener noreferrer" href="https://canhme.com/">Coupon</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-640"><a target="_blank" rel="noopener noreferrer" href="https://canhme.com/vultr-coupon/">Vultr</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-256"><a target="_blank" rel="noopener noreferrer" href="https://canhme.com/digitalocean-coupon/">Digital Ocean</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-257"><a target="_blank" rel="noopener noreferrer" href="https://canhme.com/ramnode-coupon/">Ramnode</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2288"><a href="#">Tools</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2287"><a href="https://hocvps.com/crontab/">Tạo Crontab (Cron Job)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2302"><a href="https://hocvps.com/header/">Header Check</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2331"><a href="https://hocvps.com/csr/">Tạo mã CSR Online</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2335"><a target="_blank" rel="noopener noreferrer" href="https://tocdo.net/">Test Tốc Độ</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-796"><a href="https://hocvps.com/dich-vu/">Dịch vụ</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2362"><a href="https://hocvps.com/dich-vu/">Dịch vụ Cài đặt VPS/Server</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2361"><a href="https://hocvps.com/dich-vu-ssl/">Dịch vụ Cài đặt SSL</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1883"><a href="https://hocvps.com/lien-he/">Liên hệ</a></li>
+</ul></nav>
+<!-- #primary-nav -->
+
+</div>
+</header>
+<!-- /#header -->
+
+<!-- #live-search -->
+    <div id="live-search">
+    <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="https://hocvps.com/">
+        <input type="text" onfocus="if (this.value == 'Tìm kiếm bài viết hướng dẫn trên Học VPS') {this.value = '';}" onblur="if (this.value == '')  {this.value = 'Tìm kiếm bài viết hướng dẫn trên Học VPS';}" value="Tìm kiếm bài viết hướng dẫn trên Học VPS" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit">
+                <i class='fa fa-search'></i><span>Search</span>
+            </button>
+      </form>
+      </div>
+    </div>
+    </div>
+<!-- /#live-search -->
+
+<!-- #primary -->
+<div id="primary" class="sidebar-right clearfix"> 
+<!-- .container -->
+<div class="ht-container">
+
+  <!-- #content -->
+  <section id="content" role="main">
+	  
+	    
+<!-- #page-header -->
+<header id="page-header" class="clearfix">
+  <h1 class="page-title">Các câu lệnh MySQL quan trọng cần phải biết</h1>
+    <div id="breadcrumbs" class="breadcrumbs"><span xmlns:v="http://rdf.data-vocabulary.org/#"><span typeof="v:Breadcrumb"><a href="https://hocvps.com/" rel="v:url" property="v:title"><icon class="fa fa-home"></icon> Học VPS</a> / <span rel="v:child" typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="https://hocvps.com/database/">Database</a></span> / <span class="breadcrumb_last">Các câu lệnh MySQL quan trọng cần phải biết</span></span></div><!-- .breadcrumbs --></header>
+<!-- /#page-header --> 
+
+
+    
+  
+<ul class="entry-meta clearfix">
+
+<li class="date"> 
+    <i class="fa fa-clock-o"></i>
+    <time datetime="2014-03-07" itemprop="datePublished">07/03/2014</time>
+</li>
+<li class="author">
+    <i class="fa fa-user"></i>
+	Luân Trần</li>
+<li class="category">
+    <i class="fa fa-folder"></i>
+    <a href="https://hocvps.com/database/" rel="category tag">Database</a>    </li>
+
+<li class="views">
+    <i class="fa fa-bar-chart"></i>
+	49,620 Views</li>
+
+<li class="comments">
+    <i class="fa fa-comment"></i>
+	<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comments">38 Comments</a></li>
+
+
+</ul>
+  
+    <article id="post-224" class="clearfix post-224 post type-post status-publish format-standard hentry category-database">
+
+	<div class="share-container">
+		<span class="label">CHIA SẺ BÀI VIẾT:</span>
+		<ul class="rrssb-buttons">
+	      <li class="rrssb-facebook">
+	        <a href="https://www.facebook.com/sharer/sharer.php?u=https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/" class="popup">
+	          <span class="rrssb-icon">
+	            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29"><path d="M26.4 0H2.6C1.714 0 0 1.715 0 2.6v23.8c0 .884 1.715 2.6 2.6 2.6h12.393V17.988h-3.996v-3.98h3.997v-3.062c0-3.746 2.835-5.97 6.177-5.97 1.6 0 2.444.173 2.845.226v3.792H21.18c-1.817 0-2.156.9-2.156 2.168v2.847h5.045l-.66 3.978h-4.386V29H26.4c.884 0 2.6-1.716 2.6-2.6V2.6c0-.885-1.716-2.6-2.6-2.6z"/></svg>
+	          </span>
+	          <span class="rrssb-text">facebook</span>
+	        </a>
+	      </li>
+		  <li class="rrssb-googleplus">
+	          <a href="https://plus.google.com/share?url=https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/" class="popup">
+	            <span class="rrssb-icon">
+	              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 8.29h-1.95v2.6h-2.6v1.82h2.6v2.6H21v-2.6h2.6v-1.885H21V8.29zM7.614 10.306v2.925h3.9c-.26 1.69-1.755 2.925-3.9 2.925-2.34 0-4.29-2.016-4.29-4.354s1.885-4.353 4.29-4.353c1.104 0 2.014.326 2.794 1.105l2.08-2.08c-1.3-1.17-2.924-1.883-4.874-1.883C3.65 4.586.4 7.835.4 11.8s3.25 7.212 7.214 7.212c4.224 0 6.953-2.988 6.953-7.082 0-.52-.065-1.104-.13-1.624H7.614z"/></svg>            </span>
+	            <span class="rrssb-text">google+</span>
+	          </a>
+          </li>
+	      <li class="rrssb-email">
+	        <a href="mailto:?Subject=Các câu lệnh MySQL quan trọng cần phải biết&body=https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/">
+	          <span class="rrssb-icon">
+	            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21.386 2.614H2.614A2.345 2.345 0 0 0 .279 4.961l-.01 14.078a2.353 2.353 0 0 0 2.346 2.347h18.771a2.354 2.354 0 0 0 2.347-2.347V4.961a2.356 2.356 0 0 0-2.347-2.347zm0 4.694L12 13.174 2.614 7.308V4.961L12 10.827l9.386-5.866v2.347z"/></svg>
+	          </span>
+	          <span class="rrssb-text">email</span>
+	        </a>
+	      </li>
+		</ul>
+	</div>
+    
+	<!-- .entry-header -->
+	<header class="entry-header">
+    
+        	    
+	</header>
+	<!-- /.entry-header -->
+        
+        <div class="entry-content">
+          <p><span style="line-height: 1.5em;">Khi chạy các lệnh này, bạn cần login vào MySQL với tài khoản root (MySQL root chứ không phải tài khoản root quản lý VPS) hoặc tài khoản có full quyền. Tất cả các thao tác mình thực hiện trên VPS CentOS</span></p>
+<p>Đăng nhập MySQL bạn dùng lệnh: <code>mysql -u root -p</code></p>
+<h2>1. Thư mục chứa database</h2>
+<p>Trên CentOS, toàn bộ file raw database được lưu trong thư mục <code>/var/lib/mysql</code></p>
+<h2>2. Quản lý tài khoản và phân quyền</h2>
+<pre>Hiển thị toàn bộ users:
+mysql&gt; SELECT * FROM mysql.user;
+
+Xóa null user:
+mysql&gt; DELETE FROM mysql.user WHERE user = ' ';
+
+Xóa tất cả user mà không phải root:
+mysql&gt; DELETE FROM mysql.user WHERE NOT (host="localhost" AND user="root");
+
+Đổi tên tài khoản root (giúp bảo mật):
+mysql&gt; UPDATE mysql.user SET user="mydbadmin" WHERE user="root";
+
+Gán full quyền cho một user mới:
+mysql&gt; GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'mypass' WITH GRANT OPTION;
+
+Phân quyền chi tiết cho một user mới:
+mysql&gt; GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES ON mydatabase.* TO 'username'@'localhost' IDENTIFIED BY 'mypass';
+
+Gán full quyền cho một user mới trên một database nhất định:
+mysql&gt; GRANT ALL PRIVILEGES ON mydatabase.* TO 'username'@'localhost' IDENTIFIED BY 'mypass' WITH GRANT OPTION;
+
+Thay đổi mật khẩu user:
+mysql&gt; UPDATE mysql.user SET password=PASSWORD("newpass") WHERE User='username';
+
+Xóa user:
+mysql&gt; DELETE FROM mysql.user WHERE user="username";
+
+Cuối cùng reload user
+mysql&gt; FLUSH PRIVILEGES;
+mysql&gt; exit;</pre>
+<h2>3. Các thao tác database</h2>
+<pre>Hiển thị toàn bộ databases:
+mysql&gt; SHOW DATABASES;
+Tạo database:
+mysql&gt; CREATE DATABASE mydatabase;
+
+Sử dụng một database:
+mysql&gt; USE mydatabase;
+
+Xóa một database:
+mysql&gt; DROP DATABASE mydatabase;
+
+Tối ưu database:
+All Databases:
+$ sudo mysqlcheck -o --all-databases -u root -p
+Single Database:
+$ sudo mysqlcheck -o db_schema_name -u root -p</pre>
+<h2>4. Các thao tác table</h2>
+<p>Tất cả các thao tác bên dưới bạn phải lựa chọn trước database bằng cách dùng lệnh: <code>mysql&gt; USE mydatabase;</code></p>
+<pre>Hiển thị toàn bộ table:
+mysql&gt; SHOW TABLES;
+
+Hiển thị dữ liệu của table:
+mysql&gt; SELECT * FROM tablename;
+
+Đổi tên table :
+mysql&gt; RENAME TABLE first TO second;
+hoặc
+mysql&gt; ALTER TABLE mytable rename as mynewtable;
+
+Xóa table:
+mysql&gt; DROP TABLE mytable;</pre>
+<h2>5. Các thao tác cột và hàng</h2>
+<p>Tất cả các thao tác bên dưới bạn phải lựa chọn trước database bằng cách dùng lệnh: <code>mysql&gt; USE mydatabase;</code></p>
+<pre>Hiển thị các column trong table:
+mysql&gt; DESC mytable;
+hoặc
+mysql&gt; SHOW COLUMNS FROM mytable;
+
+Đổi tên column:
+mysql&gt; UPDATE mytable SET mycolumn="newinfo" WHERE mycolumn="oldinfo";
+
+Select dữ liệu:
+mysql&gt; SELECT * FROM mytable WHERE mycolumn='mydata' ORDER BY mycolumn2;
+
+Insert dữ liệu vào table:
+mysql&gt; INSERT INTO mytable VALUES('column1data','column2data','column3data','column4data','column5data','column6data','column7data','column8data','column9data');
+
+Xóa dữ liệu trong table:
+mysql&gt; DELETE FROM mytable WHERE mycolumn="mydata";
+
+Cập nhật dữ liệu trong table:
+mysql&gt; UPDATE mytable SET column1="mydata" WHERE column2="mydata";</pre>
+<h2>6. Các thao tác sao lưu và phục hồi</h2>
+<pre>Sao lưu toàn bộ database bằng lệnh (chú ý không có khoảng trắng giữa -p và mật khẩu):
+mysqldump -u root -pmypass --all-databases &gt; alldatabases.sql
+
+Sao lưu một database bất kỳ:
+mysqldump -u username -pmypass databasename &gt; database.sql
+
+Khôi phục toàn bộ database bằng lệnh:
+mysql -u username -pmypass &lt; alldatabases.sql (no space in between -p and mypass)
+
+Khôi phục một database bất kỳ:
+mysql -u username -pmypass databasename &lt; database.sql
+
+Chỉ sao lưu cấu trúc database:
+mysqldump --no-data --databases databasename &gt; structurebackup.sql
+
+Chỉ sao lưu cấu trúc nhiều database:
+mysqldump --no-data --databases databasename1 databasename2 databasename3 &gt; structurebackup.sql
+
+Sao lưu một số table nhất định:
+mysqldump --add-drop-table -u username -pmypass databasename table_1 table_2 &gt; databasebackup.sql</pre>
+<div class='yarpp-related'>
+<h3>Bài viết liên quan:</h3><ol>
+<li><a href="https://hocvps.com/logrotate/" rel="bookmark" title="LogRotate &#8211; Công cụ quản lý Log files quan trọng cần phải biết">LogRotate &#8211; Công cụ quản lý Log files quan trọng cần phải biết </a></li>
+<li><a href="https://hocvps.com/reset-mysql-root-password/" rel="bookmark" title="Reset MySQL root password">Reset MySQL root password </a></li>
+<li><a href="https://hocvps.com/file-va-duong-dan-sentora/" rel="bookmark" title="File và đường dẫn quan trọng khi sử dụng Sentora">File và đường dẫn quan trọng khi sử dụng Sentora </a></li>
+<li><a href="https://hocvps.com/21-cau-lenh-linux-phai-nho/" rel="bookmark" title="21 câu lệnh Linux phải nhớ">21 câu lệnh Linux phải nhớ </a></li>
+<li><a href="https://hocvps.com/chay-lenh-mysql-khong-can-password/" rel="bookmark" title="Chạy lệnh MySQL không cần password">Chạy lệnh MySQL không cần password </a></li>
+<li><a href="https://hocvps.com/tao-mysql-database-va-user-bang-lenh-terminal/" rel="bookmark" title="Tạo mysql database và user bằng lệnh terminal">Tạo mysql database và user bằng lệnh terminal </a></li>
+</ol>
+</div>
+	              </div> 
+        
+        		 
+</article>
+
+
+    
+
+
+<div id="comments" class="comments-area">
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Comment của bạn <small><a rel="nofollow" id="cancel-comment-reply-link" href="/cac-cau-lenh-mysql-can-phai-biet/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://hocvps.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='224' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="27e03d7872" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="246"/></p></form>	</div><!-- #respond -->
+		
+	
+			<h3 id="comments-title">38 Comments</h3>
+		
+		
+		<ol class="commentlist">
+				<li class="comment even thread-even depth-1" id="li-comment-41499">
+		<article id="comment-41499" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-41499' data-commentid="41499" data-postid="224" data-belowelement="comment-41499" data-respondelement="respond" aria-label='Reply to lubu'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/c8ab4d827b535e29c6d8b30cf378ec9f?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/c8ab4d827b535e29c6d8b30cf378ec9f?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">lubu </cite>                    <span class="comment-count">1 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-41499"><time pubdate datetime="2019-08-05T23:14:11+07:00">05/08/2019 at 11:14 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Bạn ơi cho mình hỏi sao mình insert 1 phần tử nó lại bị duplicate phần tử đó thành 2 phần tử zậy?</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-39600">
+		<article id="comment-39600" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-39600' data-commentid="39600" data-postid="224" data-belowelement="comment-39600" data-respondelement="respond" aria-label='Reply to LEO'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/c7f7798427c8c69318192947f8b55b62?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/c7f7798427c8c69318192947f8b55b62?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">LEO </cite>                    <span class="comment-count">6 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-39600"><time pubdate datetime="2019-06-14T12:06:40+07:00">14/06/2019 at 12:06 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Chào hocpvs,<br />
+Cho mình hỏi chút là tự nhiên mình bị lỗi như thế này là sao ạ.<br />
+Mình muốn tạo thêm DB mà không được.<br />
+<a target="_blank" href="https://imgur.com/KaHDYfs" rel="nofollow ugc">https://imgur.com/KaHDYfs</a><br />
+Mong cả nhà giúp đỡ.<br />
+Xin cảm ơn!</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-phuonghv even depth-2" id="li-comment-40016">
+		<article id="comment-40016" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-40016' data-commentid="40016" data-postid="224" data-belowelement="comment-40016" data-respondelement="respond" aria-label='Reply to Việt Phương'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Việt Phương </cite>					<span class="author-badge">Moderator</span>
+					<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-40016"><time pubdate datetime="2019-06-30T22:35:03+07:00">30/06/2019 at 10:35 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Bạn restart lại MySQL rồi kiểm tra lại lệnh tạo DB<br />
+Cho mình kết quả của <code>ls -al /var/lib/mysql/</code></p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-39520">
+		<article id="comment-39520" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-39520' data-commentid="39520" data-postid="224" data-belowelement="comment-39520" data-respondelement="respond" aria-label='Reply to Lê Văn Thuấn'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/c5835dc827c91c068341c40834556864?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/c5835dc827c91c068341c40834556864?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn"><a href='https://levanthuan.com' rel='external nofollow ugc' class='url'>Lê Văn Thuấn</a> </cite>                    <span class="comment-count">19 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-39520"><time pubdate datetime="2019-06-10T15:32:57+07:00">10/06/2019 at 3:32 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>VPS của mình max là 53 database cho 53 Web, vậy làm sao để nâng lên ạ?</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-phuonghv even depth-2" id="li-comment-40008">
+		<article id="comment-40008" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-40008' data-commentid="40008" data-postid="224" data-belowelement="comment-40008" data-respondelement="respond" aria-label='Reply to Việt Phương'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Việt Phương </cite>					<span class="author-badge">Moderator</span>
+					<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-40008"><time pubdate datetime="2019-06-30T22:22:59+07:00">30/06/2019 at 10:22 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>MySQL không có giới hạn số Database tối đa. Việc giới hạn có thể từ hệ điều hành của VPS, giới hạn về số lượng file/thư mục/dung lượng thư mục</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-35839">
+		<article id="comment-35839" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-35839' data-commentid="35839" data-postid="224" data-belowelement="comment-35839" data-respondelement="respond" aria-label='Reply to Dzũng Hoàng'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/19e4528b6c111d838a3ea8d26a4d7aba?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/19e4528b6c111d838a3ea8d26a4d7aba?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Dzũng Hoàng </cite>                    <span class="comment-count">10 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-35839"><time pubdate datetime="2019-01-21T00:11:03+07:00">21/01/2019 at 12:11 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Xin chào, </p>
+<p>Vui lòng cho mình hỏi, mình đang gặp vấn đề như sau khi cài đặt và sử dụng script hocvps.</p>
+<p>Chạy được một thời gian thì bỗng nhiên mình ko vào được PHPmyadmin nữa, vào trình quản lý file thì vẫn được với pass mặc định.</p>
+<p>Login phpmyadmin thông báo lỗi như sau:]</p>
+<p>#2002 &#8211; Connection refused &mdash; The server is not responding (or the local server&#8217;s socket is not correctly configured).</p>
+<p> mysqli_real_connect(): (HY000/2002): Connection refused</p>
+<p>Cho hỏi mình cần khắc phục như thế nào? SSH mình vẫn vào được bình thường</p>
+<p>Xin cảm ơn BQT.</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-phuonghv even depth-2" id="li-comment-35850">
+		<article id="comment-35850" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-35850' data-commentid="35850" data-postid="224" data-belowelement="comment-35850" data-respondelement="respond" aria-label='Reply to Việt Phương'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Việt Phương </cite>					<span class="author-badge">Moderator</span>
+					<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-35850"><time pubdate datetime="2019-01-21T10:38:10+07:00">21/01/2019 at 10:38 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Trạng thái MySQL của bạn như thế nào?<br />
+service mysql status<br />
+systemctl status mysql -l</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-3" id="li-comment-35863">
+		<article id="comment-35863" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-35863' data-commentid="35863" data-postid="224" data-belowelement="comment-35863" data-respondelement="respond" aria-label='Reply to Dũng Hoàng'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/19e4528b6c111d838a3ea8d26a4d7aba?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/19e4528b6c111d838a3ea8d26a4d7aba?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Dũng Hoàng </cite>                    <span class="comment-count">10 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-35863"><time pubdate datetime="2019-01-21T15:37:12+07:00">21/01/2019 at 3:37 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Của mình nó báo như thế này<br />
+<a target="_blank" href="https://imgur.com/a/VEYulMB" rel="nofollow ugc">https://imgur.com/a/VEYulMB</a></p>
+<p>[root@lifeshop home]# service mysql status<br />
+ ERROR! MariaDB is not running, but lock file (/var/lock/subsys/mysql) exists<br />
+[root@lifeshop home]# systemctl status mysql -l<br />
+● mysql.service &#8211; LSB: start and stop MariaDB<br />
+   Loaded: loaded (/etc/rc.d/init.d/mysql; bad; vendor preset: disabled)<br />
+   Active: active (exited) since Thu 2018-09-06 14:30:56 +07; 4 months 15 days ago<br />
+     Docs: man:systemd-sysv-generator(8)<br />
+  Process: 822 ExecStart=/etc/rc.d/init.d/mysql start (code=exited, status=0/SUCCESS)</p>
+<p>Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.</p>
+<p>Mấy ngày gần đây bên Vultr có gửi email thông báo, có vẻ như 1 trong những web của mình trên vps bị hack, và bị chèn mã độc thì phải.</p>
+<p>Dear Customer,</p>
+<p>This abuse ticket requires your immediate attention.  Please correct the matter and reply to this ticket with resolution within the next 48 hours to ensure uninterrupted service. Overwhelming evidence of violation/compromise may result in VPS suspension prior to the 48 hour deadline to protect system and additional customer resources.</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-phuonghv even depth-4" id="li-comment-35864">
+		<article id="comment-35864" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-35864' data-commentid="35864" data-postid="224" data-belowelement="comment-35864" data-respondelement="respond" aria-label='Reply to Việt Phương'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Việt Phương </cite>					<span class="author-badge">Moderator</span>
+					<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-35864"><time pubdate datetime="2019-01-21T15:46:07+07:00">21/01/2019 at 3:46 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Bạn chạy lệnh service start mysql<br />
+Còn vấn đề dưới thì VPs đang lạm dụng quá nhiều tài nguyên từ Vultr, gây ảnh hưởng hệ thống  và yêu cầu fix trong 48h không sẽ khóa VPS</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-35291">
+		<article id="comment-35291" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-35291' data-commentid="35291" data-postid="224" data-belowelement="comment-35291" data-respondelement="respond" aria-label='Reply to Kien Dinh'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/33af4a3bc547e8bd95e12dc249cb89fc?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/33af4a3bc547e8bd95e12dc249cb89fc?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Kien Dinh </cite>                    <span class="comment-count">8 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-35291"><time pubdate datetime="2018-12-30T17:25:28+07:00">30/12/2018 at 5:25 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Anh cho em hỏi. Em sử dụng script của hocvps xong.<br />
+Giờ đăng nhập mysql như câu lệnh trên nhưng không nhập pass được.<br />
+Sử dụng ZOC kết nối rồi dùng câu lệnh trên đúng không anh?</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-phuonghv even depth-2" id="li-comment-35345">
+		<article id="comment-35345" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-35345' data-commentid="35345" data-postid="224" data-belowelement="comment-35345" data-respondelement="respond" aria-label='Reply to Việt Phương'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Việt Phương </cite>					<span class="author-badge">Moderator</span>
+					<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-35345"><time pubdate datetime="2019-01-01T23:03:55+07:00">01/01/2019 at 11:03 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>HocVPS bản mới thì không cần nhập pass đối với user root. Bạn truy cập SSH và dùng lệnh <code>mysql -u root</code> là được</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-3" id="li-comment-35354">
+		<article id="comment-35354" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-35354' data-commentid="35354" data-postid="224" data-belowelement="comment-35354" data-respondelement="respond" aria-label='Reply to Dinh Hung Kien'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/33af4a3bc547e8bd95e12dc249cb89fc?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/33af4a3bc547e8bd95e12dc249cb89fc?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Dinh Hung Kien </cite>                    <span class="comment-count">8 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-35354"><time pubdate datetime="2019-01-02T08:17:33+07:00">02/01/2019 at 8:17 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>chào anh Phương,<br />
+Em nhập lệnh này thì nó báo là tài khoản root không có quyền truy cập mysql. Bạn nhập Yes để đồng ý.<br />
+Em nhập Yes thì nó chạy vô hạn các dòng<br />
+y<br />
+y<br />
+&#8230;<br />
+Không có điểm dừng luôn anh ạ.<br />
+Có phải là bản cài bị lỗi không anh?</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-phuonghv even depth-4" id="li-comment-35358">
+		<article id="comment-35358" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-35358' data-commentid="35358" data-postid="224" data-belowelement="comment-35358" data-respondelement="respond" aria-label='Reply to Việt Phương'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Việt Phương </cite>					<span class="author-badge">Moderator</span>
+					<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-35358"><time pubdate datetime="2019-01-02T09:09:46+07:00">02/01/2019 at 9:09 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Bạn gửi VPS qua <a target="_blank" href="mailto:support@hocvps.com">support@hocvps.com</a> mình xem cho</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-5" id="li-comment-35362">
+		<article id="comment-35362" class="comment">
+        
+        <div class="comment-action">
+            								</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/33af4a3bc547e8bd95e12dc249cb89fc?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/33af4a3bc547e8bd95e12dc249cb89fc?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Dinh Hung Kien </cite>                    <span class="comment-count">8 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-35362"><time pubdate datetime="2019-01-02T09:29:47+07:00">02/01/2019 at 9:29 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Cảm ơn anh Phương,<br />
+Em cài lại thì vô MYSQL được rồi..</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-26347">
+		<article id="comment-26347" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-26347' data-commentid="26347" data-postid="224" data-belowelement="comment-26347" data-respondelement="respond" aria-label='Reply to hoàng lâm'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/64945822e179fbd555e09d977fc62061?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/64945822e179fbd555e09d977fc62061?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">hoàng lâm </cite>                    <span class="comment-count">13 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-26347"><time pubdate datetime="2018-03-16T10:06:02+07:00">16/03/2018 at 10:06 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>cho mình hỏi đây là lỗi gì vậy ad?<br />
+[root@tinh ~]# rclone copy &#8220;remote:/HOCVPS_BACKUP/2018-15-03&#8221; /root/<br />
+2018/03/16 10:03:22 ERROR : : error reading source directory: directory not found<br />
+2018/03/16 10:03:22 ERROR : Attempt 1/3 failed with 1 errors<br />
+2018/03/16 10:03:22 ERROR : : error reading source directory: directory not found<br />
+2018/03/16 10:03:22 ERROR : Attempt 2/3 failed with 1 errors<br />
+2018/03/16 10:03:22 ERROR : : error reading source directory: directory not found<br />
+2018/03/16 10:03:22 ERROR : Attempt 3/3 failed with 1 errors</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-phuonghv odd alt depth-2" id="li-comment-26348">
+		<article id="comment-26348" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-26348' data-commentid="26348" data-postid="224" data-belowelement="comment-26348" data-respondelement="respond" aria-label='Reply to Việt Phương'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Việt Phương </cite>					<span class="author-badge">Moderator</span>
+					<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-26348"><time pubdate datetime="2018-03-16T11:26:46+07:00">16/03/2018 at 11:26 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Không tồn tại thư mục như vậy. Bạn kiểm tra trên Cloud tên thư mục có đúng như vậy không</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-23308">
+		<article id="comment-23308" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-23308' data-commentid="23308" data-postid="224" data-belowelement="comment-23308" data-respondelement="respond" aria-label='Reply to Van Phong Phan'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/d6ecd7b4e83bb3608f9a0263ea016e7b?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/d6ecd7b4e83bb3608f9a0263ea016e7b?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn"><a href='http://phongphan.net/' rel='external nofollow ugc' class='url'>Van Phong Phan</a> </cite>                    <span class="comment-count">20 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-23308"><time pubdate datetime="2017-12-05T15:39:19+07:00">05/12/2017 at 3:39 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Cho mình lưu về sài dần nhé 🙂</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-21372">
+		<article id="comment-21372" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-21372' data-commentid="21372" data-postid="224" data-belowelement="comment-21372" data-respondelement="respond" aria-label='Reply to Thanh'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/d162dfdb617950ddc518aca50aa1f006?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/d162dfdb617950ddc518aca50aa1f006?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Thanh </cite>                    <span class="comment-count">1 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-21372"><time pubdate datetime="2017-10-09T14:19:40+07:00">09/10/2017 at 2:19 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Nhờ bài hướng dẫn này mình vừa hoàn thành xong một số việc quan trọng. Xin chân thành cảm ơn ad nha.</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-15860">
+		<article id="comment-15860" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-15860' data-commentid="15860" data-postid="224" data-belowelement="comment-15860" data-respondelement="respond" aria-label='Reply to hoàng'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/1d8b9f2b28383e1b907f0c7a231f2748?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d8b9f2b28383e1b907f0c7a231f2748?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">hoàng </cite>                    <span class="comment-count">21 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-15860"><time pubdate datetime="2017-05-15T16:46:19+07:00">15/05/2017 at 4:46 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>data có đuôi .gz thì phải làm sao hả bạn</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-phuonghv odd alt depth-2" id="li-comment-15861">
+		<article id="comment-15861" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-15861' data-commentid="15861" data-postid="224" data-belowelement="comment-15861" data-respondelement="respond" aria-label='Reply to Việt Phương'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Việt Phương </cite>					<span class="author-badge">Moderator</span>
+					<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-15861"><time pubdate datetime="2017-05-15T17:08:19+07:00">15/05/2017 at 5:08 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Bạn giải nén ra nhé, <code>gzip -d file.gz</code></p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-3" id="li-comment-15869">
+		<article id="comment-15869" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-15869' data-commentid="15869" data-postid="224" data-belowelement="comment-15869" data-respondelement="respond" aria-label='Reply to hoàng'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/70d01c5991be18854453ca1e7ca83f76?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/70d01c5991be18854453ca1e7ca83f76?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn"><a href='http://dowloadgame.net' rel='external nofollow ugc' class='url'>hoàng</a> </cite>                    <span class="comment-count">1 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-15869"><time pubdate datetime="2017-05-15T19:32:50+07:00">15/05/2017 at 7:32 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>nói rõ hơn được không bạn 🙁</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-phuonghv odd alt depth-4" id="li-comment-15878">
+		<article id="comment-15878" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-15878' data-commentid="15878" data-postid="224" data-belowelement="comment-15878" data-respondelement="respond" aria-label='Reply to Việt Phương'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Việt Phương </cite>					<span class="author-badge">Moderator</span>
+					<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-15878"><time pubdate datetime="2017-05-16T09:06:41+07:00">16/05/2017 at 9:06 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Thì bạn giải nén file gzip ra bằng lệnh trên của mình rồi xử lý database như bài viết này hướng dẫn thôi.<br />
+Giải nén trên cửa sổ lệnh terminal SSH</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-13974">
+		<article id="comment-13974" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-13974' data-commentid="13974" data-postid="224" data-belowelement="comment-13974" data-respondelement="respond" aria-label='Reply to thanhnm'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/711427523360c0ffc6846f6d4386101c?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/711427523360c0ffc6846f6d4386101c?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">thanhnm </cite>                    <span class="comment-count">1 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-13974"><time pubdate datetime="2017-02-22T09:56:39+07:00">22/02/2017 at 9:56 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Rất hay, nhưng trong thao tac cột, hàng không có phần thêm, sửa, xóa column nhỉ. Cảm ơn tác giả nhiều 🙂</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-12200">
+		<article id="comment-12200" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-12200' data-commentid="12200" data-postid="224" data-belowelement="comment-12200" data-respondelement="respond" aria-label='Reply to tien'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/6b985439f8cfc44af882f76833e2d565?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/6b985439f8cfc44af882f76833e2d565?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">tien </cite>                    <span class="comment-count">2 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-12200"><time pubdate datetime="2016-11-23T09:58:12+07:00">23/11/2016 at 9:58 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Chao anh,<br />
+Sao em truy cập mysql mà nó lại ra cái MariaDB là sao ta? Em muốn tạo database<br />
+<a target="_blank" href="http://prnt.sc/danf4u" rel="nofollow ugc">http://prnt.sc/danf4u</a></p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-phuonghv even depth-2" id="li-comment-12201">
+		<article id="comment-12201" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-12201' data-commentid="12201" data-postid="224" data-belowelement="comment-12201" data-respondelement="respond" aria-label='Reply to Việt Phương'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/a09bd25f88a84e6ab4c7de6ca28dc950?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Việt Phương </cite>					<span class="author-badge">Moderator</span>
+					<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-12201"><time pubdate datetime="2016-11-23T10:10:36+07:00">23/11/2016 at 10:10 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Bạn sử dụng HocVPS Script à? Trong Script sử dụng Database MariaDB bản mới nhất (chính là MySQL được tối ưu)<br />
+Nên bạn làm việc như MySQL thôi</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-7977">
+		<article id="comment-7977" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-7977' data-commentid="7977" data-postid="224" data-belowelement="comment-7977" data-respondelement="respond" aria-label='Reply to Hiếu Luong'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/18bac195f9c1e87cf2a015d1e606c298?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/18bac195f9c1e87cf2a015d1e606c298?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Hiếu Luong </cite>                    <span class="comment-count">6 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-7977"><time pubdate datetime="2016-04-09T08:31:03+07:00">09/04/2016 at 8:31 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Hi Luân, mình thực hiện sao lưu một database, tuy nhiên mình gập lỗi như hình<br />
+<a target="_blank" href="http://i.imgur.com/KBMHcY3.jpg" rel="nofollow ugc">http://i.imgur.com/KBMHcY3.jpg</a><br />
+thanks</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-quantri bypostauthor even depth-2" id="li-comment-7981">
+		<article id="comment-7981" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-7981' data-commentid="7981" data-postid="224" data-belowelement="comment-7981" data-respondelement="respond" aria-label='Reply to Luân Trần'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/d9b1ac81d69dfa1a7d280f6bbcba2b6e?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/d9b1ac81d69dfa1a7d280f6bbcba2b6e?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Luân Trần </cite>                    <span class="author-badge">Admin</span>
+					<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-7981"><time pubdate datetime="2016-04-09T09:21:09+07:00">09/04/2016 at 9:21 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Trước và sau ký tự > có một khoảng trắng nhé bạn.</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-3" id="li-comment-7982">
+		<article id="comment-7982" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-7982' data-commentid="7982" data-postid="224" data-belowelement="comment-7982" data-respondelement="respond" aria-label='Reply to Hiếu Luong'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/18bac195f9c1e87cf2a015d1e606c298?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/18bac195f9c1e87cf2a015d1e606c298?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Hiếu Luong </cite>                    <span class="comment-count">6 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-7982"><time pubdate datetime="2016-04-09T09:40:02+07:00">09/04/2016 at 9:40 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Mình đã thêm và vẫn bị như vậy</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even depth-3" id="li-comment-7983">
+		<article id="comment-7983" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-7983' data-commentid="7983" data-postid="224" data-belowelement="comment-7983" data-respondelement="respond" aria-label='Reply to Hiếu Luong'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/18bac195f9c1e87cf2a015d1e606c298?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/18bac195f9c1e87cf2a015d1e606c298?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Hiếu Luong </cite>                    <span class="comment-count">6 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-7983"><time pubdate datetime="2016-04-09T09:41:15+07:00">09/04/2016 at 9:41 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p><a target="_blank" href="http://i.imgur.com/grjJcly.jpg" rel="nofollow ugc">http://i.imgur.com/grjJcly.jpg</a></p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-quantri bypostauthor odd alt depth-4" id="li-comment-7988">
+		<article id="comment-7988" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-7988' data-commentid="7988" data-postid="224" data-belowelement="comment-7988" data-respondelement="respond" aria-label='Reply to Luân Trần'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/d9b1ac81d69dfa1a7d280f6bbcba2b6e?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/d9b1ac81d69dfa1a7d280f6bbcba2b6e?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Luân Trần </cite>                    <span class="author-badge">Admin</span>
+					<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-7988"><time pubdate datetime="2016-04-09T12:00:27+07:00">09/04/2016 at 12:00 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>À, lệnh này bạn chạy trực tiếp luôn, ko phải login MySQL nhé</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-5" id="li-comment-8323">
+		<article id="comment-8323" class="comment">
+        
+        <div class="comment-action">
+            								</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/6efd61e3dcf932f9c9c0fc58bfb62b1e?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/6efd61e3dcf932f9c9c0fc58bfb62b1e?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn"><a href='http://fdfd.com' rel='external nofollow ugc' class='url'>dũng</a> </cite>                    <span class="comment-count">118 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-8323"><time pubdate datetime="2016-05-02T11:05:05+07:00">02/05/2016 at 11:05 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>mình cũng bị lỗi như bạn bên trên<br />
+<a target="_blank" href="http://i.imgur.com/grjJcly.jpg" rel="nofollow ugc">http://i.imgur.com/grjJcly.jpg</a><br />
+Nhưng khi chạy trực tiếp ko đăng nhập mysql thì nó lại báo :<br />
+No such file or directory</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment odd alt depth-5" id="li-comment-8324">
+		<article id="comment-8324" class="comment">
+        
+        <div class="comment-action">
+            								</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/6efd61e3dcf932f9c9c0fc58bfb62b1e?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/6efd61e3dcf932f9c9c0fc58bfb62b1e?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn"><a href='http://fdfd.com' rel='external nofollow ugc' class='url'>dũng</a> </cite>                    <span class="comment-count">118 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-8324"><time pubdate datetime="2016-05-02T11:08:50+07:00">02/05/2016 at 11:08 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>chính xác là mình dùng lệnh :<br />
+mysql -u username -pmypass databasename &lt; database.sql</p>
+<p>Lệnh này là phải đăng nhập MySQL đúng k bạn<br />
+mình dùng lệnh đó thì bị lỗi như của bạn bên trên</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-7101">
+		<article id="comment-7101" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-7101' data-commentid="7101" data-postid="224" data-belowelement="comment-7101" data-respondelement="respond" aria-label='Reply to masa'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/35ce7428b50bf78de375b315261dd469?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/35ce7428b50bf78de375b315261dd469?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn"><a href='http://masa.vn' rel='external nofollow ugc' class='url'>masa</a> </cite>                    <span class="comment-count">1 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-7101"><time pubdate datetime="2016-01-17T14:40:44+07:00">17/01/2016 at 2:40 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>cho mình hỏi những thông tin này có hướng dẫn cho window được không? mình đọc nhưng thấy dành cho linux thôi hay sao ý.<br />
+Cám ơn ạ.</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-quantri bypostauthor odd alt depth-2" id="li-comment-7105">
+		<article id="comment-7105" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-7105' data-commentid="7105" data-postid="224" data-belowelement="comment-7105" data-respondelement="respond" aria-label='Reply to Luân Trần'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/d9b1ac81d69dfa1a7d280f6bbcba2b6e?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/d9b1ac81d69dfa1a7d280f6bbcba2b6e?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Luân Trần </cite>                    <span class="author-badge">Admin</span>
+					<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-7105"><time pubdate datetime="2016-01-17T22:41:14+07:00">17/01/2016 at 10:41 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Những lệnh này chạy trên Linux nhé.</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-7052">
+		<article id="comment-7052" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-7052' data-commentid="7052" data-postid="224" data-belowelement="comment-7052" data-respondelement="respond" aria-label='Reply to Hieu'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/e5dcac2c2cab72ff1c7844bcb8fd2991?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/e5dcac2c2cab72ff1c7844bcb8fd2991?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Hieu </cite>                    <span class="comment-count">1 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-7052"><time pubdate datetime="2016-01-14T22:20:41+07:00">14/01/2016 at 10:20 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Cho mình hỏi muốn nhập database có sẵn thì làm sao ạ.</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-quantri bypostauthor odd alt depth-2" id="li-comment-7064">
+		<article id="comment-7064" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-7064' data-commentid="7064" data-postid="224" data-belowelement="comment-7064" data-respondelement="respond" aria-label='Reply to Luân Trần'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/d9b1ac81d69dfa1a7d280f6bbcba2b6e?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/d9b1ac81d69dfa1a7d280f6bbcba2b6e?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Luân Trần </cite>                    <span class="author-badge">Admin</span>
+					<a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-7064"><time pubdate datetime="2016-01-15T11:16:37+07:00">15/01/2016 at 11:16 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Trong phần 6. Các thao tác sao lưu và phục hồi có nói đấy bạn.<br />
+Hoặc dùng phpMyAdmin import vào.</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-2620">
+		<article id="comment-2620" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-2620' data-commentid="2620" data-postid="224" data-belowelement="comment-2620" data-respondelement="respond" aria-label='Reply to Phúc'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/6b8df768d5496cc2cc71e07c6f79c80d?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/6b8df768d5496cc2cc71e07c6f79c80d?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn">Phúc </cite>                    <span class="comment-count">1 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-2620"><time pubdate datetime="2015-01-11T14:02:42+07:00">11/01/2015 at 2:02 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>Cho mình hỏi muốn để file restore thì để nó vô đâu, tại mình test hocvps script thì dùng lệnh restore &#8221; mysql -u username -pmypass databasename &lt; database.sql &quot; thì nó chạy nhưng không có chuyện gì xảy ra cả</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-7069">
+		<article id="comment-7069" class="comment">
+        
+        <div class="comment-action">
+            					<a rel='nofollow' class='comment-reply-link' href='#comment-7069' data-commentid="7069" data-postid="224" data-belowelement="comment-7069" data-respondelement="respond" aria-label='Reply to Thiện'>Reply</a>			</div><!-- .comment-action -->
+        
+			<header class="comment-meta comment-author vcard">
+				<img alt='' src='https://secure.gravatar.com/avatar/75a89eb1a983e2dc1fa28fb194ceda17?s=44&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/75a89eb1a983e2dc1fa28fb194ceda17?s=88&#038;d=mm&#038;r=g 2x' class='avatar avatar-44 photo' height='44' width='44' /><cite class="fn"><a href='http://nthien.info' rel='external nofollow ugc' class='url'>Thiện</a> </cite>                    <span class="comment-count">29 comment</span>
+                   <a href="https://hocvps.com/cac-cau-lenh-mysql-can-phai-biet/#comment-7069"><time pubdate datetime="2016-01-15T14:45:28+07:00">15/01/2016 at 2:45 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content clearfix">
+				<p>nếu không báo gì hết thì thành công rồi đó bạn 😀</p>
+			</section><!-- .comment-content -->
+
+			
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .commentlist -->
+
+		
+	
+</div><!-- #comments .comments-area -->    
+    
+</section>
+<!-- #content -->
+
+<!-- #sidebar -->
+<aside id="sidebar" role="complementary">
+			<div id="wp_subscribe-2" class="widget wp_subscribe clearfix">	
+		<div id="wp-subscribe" class="wp-subscribe-wrap wp-subscribe wp-subscribe-1" data-thanks_page="0" data-thanks_page_url="" data-thanks_page_new_window="0">
+
+			<h4 class="title">Đăng ký bản tin<br /> <span>Học VPS</span></h4>
+
+			<p class="text">Nhận kiến thức mới, thủ thuật hay trực tiếp qua email.</p>
+
+			
+		<form action="https://feedburner.google.com/fb/a/mailverify?uri=hocvps" method="post" class="wp-subscribe-form wp-subscribe-feedburner" id="wp-subscribe-form-1" target="popupwindow">
+
+			<input class="regular-text email-field" type="email" name="email" placeholder="Địa chỉ email của bạn" required>
+
+			<input type="hidden" name="uri" value="hocvps">
+
+			<input type="hidden" name="loc" value="en_US">
+
+			<input type="hidden" name="form_type" value="widget">
+
+			<input type="hidden" name="service" value="feedburner">
+
+			<input type="hidden" name="widget" value="wp_subscribe-2">
+						<input class="submit" type="submit" name="submit" value="Đăng Ký Ngay">
+
+		</form>
+
+		
+			<div class="wp-subscribe-loader">
+				<svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<path fill="#ffffff" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+						<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/>
+					</path>
+				</svg>
+			</div>
+
+			<p class="thanks">Thank you for subscribing.</p>
+			<p class="error">Something went wrong.</p>
+			<div class="clear"></div>
+
+			<p class="footer-text"></p>
+
+		</div>
+
+			</div>	
+<div id="text-2" class="widget widget_text clearfix">			<div class="textwidget"><div style="text-align: center;"><a class="btn btn-block btn-success" href="http://hoidap.hocvps.com/" target="_blank" rel="noopener noreferrer">Forum hỏi đáp Học VPS</a></div></div>
+		</div><div id="text-3" class="widget widget_text clearfix"><h4 class="widget-title"><span>HocVPS Script</span></h4>			<div class="textwidget"><a href="https://hocvps.com/script/" title="Cài đặt và Quản lý server dễ dàng với HocVPS Script"><img src="https://hocvps.com/wp-content/uploads/2014/05/hocvps-script.png" width="100%" alt="HocVPS Script"></a></div>
+		</div><div id="categories-2" class="widget widget_categories clearfix"><h4 class="widget-title"><span>Categories</span></h4>		<ul>
+				<li class="cat-item cat-item-7"><a href="https://hocvps.com/apache/">Apache</a> <span>7</span>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://hocvps.com/bao-mat/">Bảo mật</a> <span>22</span>
+</li>
+	<li class="cat-item cat-item-55"><a href="https://hocvps.com/bash-shell-script/" title="Bash Shell Script là một chuỗi các lệnh được viết trong một file plain text thường được tạo ra để tự động hóa các task hoặc các phần của quản trị hệ thống.">Bash Shell Script</a> <span>6</span>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://hocvps.com/basics/">Basics</a> <span>43</span>
+</li>
+	<li class="cat-item cat-item-119"><a href="https://hocvps.com/blog/">Blog</a> <span>3</span>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://hocvps.com/centos/">CentOS</a> <span>27</span>
+</li>
+	<li class="cat-item cat-item-16"><a href="https://hocvps.com/control-panels/">Control Panels</a> <span>19</span>
+</li>
+	<li class="cat-item cat-item-15"><a href="https://hocvps.com/database/">Database</a> <span>8</span>
+</li>
+	<li class="cat-item cat-item-25"><a href="https://hocvps.com/danh-gia/">Đánh giá</a> <span>10</span>
+</li>
+	<li class="cat-item cat-item-12"><a href="https://hocvps.com/lamp/" title="LAMP là từ viết tắt của Linux, Apache, MySQL và PHP, được sử dụng khá rộng rãi để quản trị hệ thống web server.">LAMP</a> <span>3</span>
+</li>
+	<li class="cat-item cat-item-13"><a href="https://hocvps.com/lemp/" title="LEMP server là một server chạy Linux, Nginx (đọc là Engine x</span>, MySql và PHP (hoặc Perl/Python</span>. Nó tương tự như LAMP server ngoại trừ việc web server nền tảng được giám sát bằng Nginx thay vì Apache.">LEMP</a> <span>6</span>
+</li>
+	<li class="cat-item cat-item-11"><a href="https://hocvps.com/email/">Mail Server</a> <span>4</span>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://hocvps.com/nginx/">NGINX</a> <span>18</span>
+</li>
+	<li class="cat-item cat-item-17"><a href="https://hocvps.com/providers/">Providers</a> <span>27</span>
+<ul class='children'>
+	<li class="cat-item cat-item-18"><a href="https://hocvps.com/providers/digital-ocean/">Digital Ocean</a> <span>7</span>
+</li>
+	<li class="cat-item cat-item-124"><a href="https://hocvps.com/providers/hosthatch/">HostHatch</a> <span>1</span>
+</li>
+	<li class="cat-item cat-item-19"><a href="https://hocvps.com/providers/linode/">Linode</a> <span>1</span>
+</li>
+	<li class="cat-item cat-item-132"><a href="https://hocvps.com/providers/ovh/">OVH</a> <span>1</span>
+</li>
+	<li class="cat-item cat-item-21"><a href="https://hocvps.com/providers/ramnode/">Ramnode</a> <span>3</span>
+</li>
+	<li class="cat-item cat-item-36"><a href="https://hocvps.com/providers/vultr/" title="Vultr là nhà cung cấp dịch vụ Cloud Server nổi tiếng chất lượng với 100% phần cứng SSD, 15 datacenter location trải dài trên khắp thế giới. Ưu điểm của Vultr là giá rẻ, hiệu năng cao và cài đặt dễ dàng, nhanh chóng.
+
+Truy cập vào Vultr tại đây: https://www.vultr.com">Vultr</a> <span>13</span>
+</li>
+	<li class="cat-item cat-item-128"><a href="https://hocvps.com/providers/z-com/">Z.com</a> <span>1</span>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-89"><a href="https://hocvps.com/thu-thuat/">Thủ thuật</a> <span>19</span>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://hocvps.com/toi-uu-server/">Tối ưu server</a> <span>18</span>
+</li>
+	<li class="cat-item cat-item-6"><a href="https://hocvps.com/ubuntu/">Ubuntu</a> <span>15</span>
+</li>
+	<li class="cat-item cat-item-23"><a href="https://hocvps.com/video/" title="Hướng dẫn cài đặt, quản trị VPS bằng Video">Video</a> <span>1</span>
+</li>
+	<li class="cat-item cat-item-8"><a href="https://hocvps.com/wordpress/">WordPress</a> <span>8</span>
+</li>
+		</ul>
+			</div><div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix"> 
+        <h4 class="widget-title"><span>Bài nổi bật</span></h4>                            
+                <ul class="clearfix">
+                
+					                                        <li class="clearfix format-standard">
+					<a href="https://hocvps.com/script/" rel="bookmark">Cài đặt và Quản lý server dễ dàng với HocVPS Script</a>
+                    </li>
+                                        <li class="clearfix format-standard">
+					<a href="https://hocvps.com/huong-dan-config-vps-chiu-tai-lon-voi-hocvps-script/" rel="bookmark">Cấu hình tối ưu cho VPS, 2GB RAM được 4.363 người Online</a>
+                    </li>
+                                        <li class="clearfix format-standard">
+					<a href="https://hocvps.com/cai-dat-windows-7-tren-vps-vultr/" rel="bookmark">Cài đặt Windows trên VPS Vultr</a>
+                    </li>
+                                        <li class="clearfix format-standard">
+					<a href="https://hocvps.com/windows-iso-vultr/" rel="bookmark">Tổng hợp Windows ISO cài trên Vultr</a>
+                    </li>
+                                        <li class="clearfix format-standard">
+					<a href="https://hocvps.com/cai-dat-lets-encrypt/" rel="bookmark">Cài đặt chứng chỉ Let&#8217;s Encrypt SSL trên server HocVPS Script</a>
+                    </li>
+                                        <li class="clearfix format-standard">
+					<a href="https://hocvps.com/nen-va-giai-nen-file-tar-gzip-va-zip/" rel="bookmark">Nén và Giải nén file Tar, Gzip và Zip</a>
+                    </li>
+                                        <li class="clearfix format-standard">
+					<a href="https://hocvps.com/auto-install-hocvps-script-wordpress/" rel="bookmark">Script tự động cài đặt HocVPS Script và WordPress</a>
+                    </li>
+                                        
+                    
+                </ul>
+		
+		</div><div id="text-13" class="widget widget_text clearfix"><h4 class="widget-title"><span>VPS chất lượng nên dùng</span></h4>			<div class="textwidget"><p><a title="Vultr, VPS chất lượng cao giá rẻ" href="https://hocvps.com/vps/vultr/" target="_blank" rel="nofollow noopener noreferrer"><img src="https://canhme.com/wp-content/uploads/2019/01/Vultr-tang-mien-phi-50-USD.jpg" alt="Vultr" width="100%" /></a></p>
+</div>
+		</div><!-- #sidebar -->
+</aside>
+
+</div>
+<!-- .container -->
+</div>
+<!-- /#primary -->
+
+<!-- #footer-widgets -->
+<div id="footer-widgets" class="clearfix">
+<div class="ht-container">
+
+<div class="row stacked"><div id="cwp-widget-2" class="widget widget_recent_comments comments_widget_plus column col-third"><h4 class="widget-title"><span>Comment mới</span></h4><ul class="cwp-ul "><li class="recentcomments cwp-li"><a class="comment-link cwp-comment-link" href="https://hocvps.com/windows-iso-vultr/comment-page-11/#comment-57669"><span class="comment-avatar cwp-avatar rounded"><img alt='' src='https://secure.gravatar.com/avatar/08276733bfa9a8edefe07a4404e30a55?s=55&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/08276733bfa9a8edefe07a4404e30a55?s=110&#038;d=mm&#038;r=g 2x' class='avatar avatar-55 photo' height='55' width='55' /></span></a><span class="cwp-comment-title"><span class="comment-author-link cwp-author-link">hong</span> <span class="cwp-on-text">on</span> <a class="comment-link cwp-comment-link" href="https://hocvps.com/windows-iso-vultr/comment-page-11/#comment-57669">Tổng hợp Windows ISO cài trên Vultr</a></span></li><li class="recentcomments cwp-li"><a class="comment-link cwp-comment-link" href="https://hocvps.com/script/comment-page-62/#comment-57665"><span class="comment-avatar cwp-avatar rounded"><img alt='' src='https://secure.gravatar.com/avatar/2b2a4b9f368792df266f550ecc9665e1?s=55&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/2b2a4b9f368792df266f550ecc9665e1?s=110&#038;d=mm&#038;r=g 2x' class='avatar avatar-55 photo' height='55' width='55' /></span></a><span class="cwp-comment-title"><span class="comment-author-link cwp-author-link">Hạ Vũ</span> <span class="cwp-on-text">on</span> <a class="comment-link cwp-comment-link" href="https://hocvps.com/script/comment-page-62/#comment-57665">Cài đặt và Quản lý server dễ dàng với HocVPS Script</a></span></li><li class="recentcomments cwp-li"><a class="comment-link cwp-comment-link" href="https://hocvps.com/script/comment-page-62/#comment-57656"><span class="comment-avatar cwp-avatar rounded"><img alt='' src='https://secure.gravatar.com/avatar/4e70d6ee0d4caa848c001024cfde5cf1?s=55&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/4e70d6ee0d4caa848c001024cfde5cf1?s=110&#038;d=mm&#038;r=g 2x' class='avatar avatar-55 photo' height='55' width='55' /></span></a><span class="cwp-comment-title"><span class="comment-author-link cwp-author-link">huy</span> <span class="cwp-on-text">on</span> <a class="comment-link cwp-comment-link" href="https://hocvps.com/script/comment-page-62/#comment-57656">Cài đặt và Quản lý server dễ dàng với HocVPS Script</a></span></li><li class="recentcomments cwp-li"><a class="comment-link cwp-comment-link" href="https://hocvps.com/mot-so-lenh-co-ban-kiem-tra-server-khi-bi-ddos/comment-page-1/#comment-57648"><span class="comment-avatar cwp-avatar rounded"><img alt='' src='https://secure.gravatar.com/avatar/19ae22623cbb9851a11ccc5a7692f751?s=55&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/19ae22623cbb9851a11ccc5a7692f751?s=110&#038;d=mm&#038;r=g 2x' class='avatar avatar-55 photo' height='55' width='55' /></span></a><span class="cwp-comment-title"><span class="comment-author-link cwp-author-link"><a href='https://chinese.com.vn/214-bo-thu-trong-tieng-trung-quoc.html' rel='external nofollow ugc' class='url'>bo thu</a></span> <span class="cwp-on-text">on</span> <a class="comment-link cwp-comment-link" href="https://hocvps.com/mot-so-lenh-co-ban-kiem-tra-server-khi-bi-ddos/comment-page-1/#comment-57648">Một số lệnh cơ bản kiểm tra server khi bị DDoS</a></span></li><li class="recentcomments cwp-li"><a class="comment-link cwp-comment-link" href="https://hocvps.com/script/comment-page-62/#comment-57647"><span class="comment-avatar cwp-avatar rounded"><img alt='' src='https://secure.gravatar.com/avatar/4a3045f5790b258f3dc41b658d5af16f?s=55&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/4a3045f5790b258f3dc41b658d5af16f?s=110&#038;d=mm&#038;r=g 2x' class='avatar avatar-55 photo' height='55' width='55' /></span></a><span class="cwp-comment-title"><span class="comment-author-link cwp-author-link">Quang Anh</span> <span class="cwp-on-text">on</span> <a class="comment-link cwp-comment-link" href="https://hocvps.com/script/comment-page-62/#comment-57647">Cài đặt và Quản lý server dễ dàng với HocVPS Script</a></span></li></ul><!-- Generated by https://wordpress.org/plugins/comments-widget-plus/ --></div>		<div id="recent-posts-2" class="widget widget_recent_entries column col-third">		<h4 class="widget-title"><span>Bài mới</span></h4>		<ul>
+											<li>
+					<a href="https://hocvps.com/nang-cap-php-7-hocvps-script/">Nâng cấp PHP 7 với server sử dụng HocVPS Script</a>
+									</li>
+											<li>
+					<a href="https://hocvps.com/dang-ky-godaddy-hosting/">Hướng dẫn Đăng ký GoDaddy Hosting + FREE tên miền</a>
+									</li>
+											<li>
+					<a href="https://hocvps.com/cai-dat-serverpilot-tren-ubuntu/">Cài đặt ServerPilot trên Ubuntu</a>
+									</li>
+											<li>
+					<a href="https://hocvps.com/outline-vpn/">Hướng dẫn cài đặt Outline VPN miễn phí từ Google</a>
+									</li>
+											<li>
+					<a href="https://hocvps.com/huong-dan-cai-dat-wordpress-tren-vps-vultr/">Hướng dẫn cài đặt WordPress trên VPS Vultr</a>
+									</li>
+											<li>
+					<a href="https://hocvps.com/cai-dat-lets-encrypt/">Cài đặt chứng chỉ Let&#8217;s Encrypt SSL trên server HocVPS Script</a>
+									</li>
+											<li>
+					<a href="https://hocvps.com/script/">Cài đặt và Quản lý server dễ dàng với HocVPS Script</a>
+									</li>
+					</ul>
+		</div><div id="text-12" class="widget widget_text column col-third"><h4 class="widget-title"><span>Liên kết bạn bè</span></h4>			<div class="textwidget"><ul class="clearfix">
+<li><a href="https://povietnam.com/" target="_blank" title="Kiến thức - Kinh nghiệm sử dụng thẻ Payoneer" rel="noopener noreferrer">Payoneer Việt Nam</a></li>
+<li><a href="https://cuongquach.com/" target="_blank" title="Blog Quản Trị Hệ Thống, An Toàn Thông Tin" rel="noopener noreferrer">Blog Quản Trị Hệ Thống</a></li>
+<li><a href="https://tocdo.net/" target="_blank" rel="noopener noreferrer">Test Tốc Độ</a> server về Việt Nam</li>
+</ul></div>
+		</div></div>
+
+</div>
+</div>
+<!-- /#footer-widgets -->
+
+<!-- #site-footer -->
+<footer id="site-footer" class="clearfix" role="contentinfo">
+<div class="ht-container">
+
+    <nav id="footer-nav" role="navigation">
+    <ul id="menu-footer-menu" class="nav-footer clearfix"><li id="menu-item-987" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-987"><a href="https://hocvps.com/gioi-thieu/">Giới thiệu</a></li>
+<li id="menu-item-988" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-988"><a href="https://hocvps.com/lien-he/">Liên hệ</a></li>
+</ul>  </nav>
+  
+
+  <small id="copyright">
+    ©2018 Học VPS, một sản phẩm của <a href="https://canhme.com/" target="_blank">Canh Me</a>. Hosted by <a href="https://hocvps.com/vps/vultr/" target="_blank" rel="nofollow">Vultr</a>.    </small>
+  
+</div>
+</footer> 
+<!-- /#site-footer -->
+
+<!-- /#site-container -->
+</div>
+				<script type='text/javascript'><!--
+			var seriesdropdown = document.getElementById("orgseries_dropdown");
+			if (seriesdropdown) {
+			 function onSeriesChange() {
+					if ( seriesdropdown.options[seriesdropdown.selectedIndex].value != ( 0 || -1 ) ) {
+						location.href = "https://hocvps.com/series/"+seriesdropdown.options[seriesdropdown.selectedIndex].value;
+					}
+				}
+				seriesdropdown.onchange = onSeriesChange;
+			}
+			--></script>
+				<script type="text/javascript">
+	jQuery(document).ready(function() {
+	jQuery('#live-search #s').liveSearch({url: 'https://hocvps.com/index.php?ajax=1&s='});
+	});
+	</script>
+<link rel='stylesheet' id='wp-subscribe-css'  href='https://hocvps.com/wp-content/plugins/wp-subscribe/assets/css/wp-subscribe-form.css?ver=5.3.2' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var viewsCacheL10n = {"admin_ajax_url":"https:\/\/hocvps.com\/wp-admin\/admin-ajax.php","post_id":"224"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://hocvps.com/wp-content/plugins/wp-postviews/postviews-cache.js?ver=1.68'></script>
+<script type='text/javascript' src='https://hocvps.com/wp-content/themes/knowhow/js/functions.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://hocvps.com/wp-content/themes/knowhow/framework/shortcodes/shortcodes.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://hocvps.com/wp-includes/js/comment-reply.min.js?ver=5.3.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var q2w3_sidebar_options = [{"sidebar":"st_primary","margin_top":40,"margin_bottom":580,"stop_id":"","screen_max_width":720,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-13"]}];
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://hocvps.com/wp-content/plugins/q2w3-fixed-widget/js/q2w3-fixed-widget.min.js?ver=5.1.9'></script>
+<script type='text/javascript' src='https://hocvps.com/wp-content/plugins/wp-featherlight/js/wpFeatherlight.pkgd.min.js?ver=1.3.0'></script>
+<script type='text/javascript' src='https://hocvps.com/wp-content/themes/hocvps/js/rrssb.min.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://hocvps.com/wp-includes/js/wp-embed.min.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://cdn.onesignal.com/sdks/OneSignalSDK.js?ver=5.3.2' async='async'></script>
+<script async="async" type='text/javascript' src='https://hocvps.com/wp-content/plugins/akismet/_inc/form.js?ver=4.1.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wp_subscribe = {"ajaxurl":"https:\/\/hocvps.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://hocvps.com/wp-content/plugins/wp-subscribe/assets/js/wp-subscribe-form.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://hocvps.com/wp-content/themes/knowhow/js/jquery.livesearch.js?ver=5.3.2'></script>
+</body>
+</html>
