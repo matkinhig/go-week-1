@@ -1,9 +1,13 @@
--- USE crawldatabase;
--- SHOW TABLES
+USE crawler;
 
--- DROP TABLE crawltable;
 
--- CREATE TABLE crawltable
+
+show databases;
+SHOW TABLES;
+
+DROP TABLE crawler;
+
+-- CREATE TABLE crawler
 -- (
 -- stt INT NOT NULL AUTO_INCREMENT,
 -- url VARCHAR(255) NOT NULL,
@@ -17,6 +21,7 @@ ALTER TABLE crawltable AUTO_INCREMENT = 1;
 DELETE FROM crawltable WHERE stt>0;
 
 INSERT INTO crawltable VALUES(null,'Url', 'Title', 'Author', 'DatePublish');
-SELECT * FROM crawltable;
+SELECT * FROM articles LIMIT 10;
+SELECT * FROM crawltable LIMIT 2 OFFSET 4;
 
 
